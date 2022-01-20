@@ -4,6 +4,8 @@
 
 const fs=require('fs')
 
+const path=require('path')
+
 // // we wll be reading writing updating and deleting files
 
 // let content=fs.readFileSync('3.1_f1.txt')
@@ -71,5 +73,21 @@ const fs=require('fs')
 //readdirSync method is used to read a directory content
 
 let folderpath='E:\\WEB DEV\\NODE\\myDirectory'
-let foldercontent=fs.readdirSync('myDirectory')
+let foldercontent=fs.readdirSync(folderpath)
 console.log('Directory Content '+ foldercontent)
+
+//copying files 
+
+//src file,  destination path
+let srcFilePath='E:\\WEB DEV\\NODE\\myDirectory\\f1.txt'
+let destinationPath='E:\\WEB DEV\\NODE\\myDirectory2'
+
+
+let tobecopiedFileName=path.basename(srcFilePath)
+console.log(tobecopiedFileName)
+
+let destpath=path.join(destinationPath,tobecopiedFileName)
+console.log(destpath)
+
+fs.copyFileSync(srcFilePath,destpath)
+console.log('file copied')
